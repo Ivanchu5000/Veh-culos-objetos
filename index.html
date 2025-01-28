@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"href="style.css">
+</head>
+<body>
+    <h1>Vehículos</h1>
+    <form id = "formulario">
+        <div class="formulario">
+            <label>Marca</label>
+            <input type="text" placeholder="Ej(Ford)" id = "marca">
+            <label>Modelo</label>
+            <input type="text" placeholder="Ej(Focus)" id = "modelo">
+            <label>Velocidad máxima</label>
+            <input type="text" placeholder="Ej(10000 km/s)" id = "velocidadMaxima">
+            <label>Valor</label>
+            <input type="number" placeholder="15000$" id = "valor">
+            <button type = "submit">Agregar vehículo</button>
+        </div>
+    </form>
+
+    <h3>Lista de Vehículos</h3>
+    <table id = "tabla">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Velocidad</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody id="listaVehiculos">
+            <!-- Se agrega dinámicante desde js -->
+        </tbody>
+    </table>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

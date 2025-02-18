@@ -6,3 +6,19 @@
 .formulario > *{
     margin: 5px;
 }
+table{
+    display: flex;
+    flex-direction: column;    
+}
+td, th{
+    border: 1px solid grey;
+    text-align: center;
+}
+th{
+    width: 100px;
+    background-color: lightgrey;
+}
+td{
+    width: 100px;
+    background-color: rgb(239, 239, 239);
+}

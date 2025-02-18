@@ -8,7 +8,6 @@ const valor = document.getElementById('valor');
 const tablaVehiculos = document.getElementById('listaVehiculos');
 const formVehiculos = document.getElementById('formulario');
 const conductorSelect = document.getElementById('selectConductor');
-let listaVehiculos = [];
 let listaCond = [];
 let numeroId = 1;
 
@@ -18,7 +17,15 @@ const conductorGian = new Conductor(2, "Gian");
 listaCond.push(conductorIvan);
 listaCond.push(conductorGian);
 
+/*
+const vehIvan = new Vehiculo(numeroId,"aaa","aaa",5,1);
+numeroId++;
+conductorIvan.agregarVehiculo(vehIvan);
+*/
+
 window.onload = cargarSelectCond();
+
+actualizarVehiculo();
 
 function cargarSelectCond()
 {
@@ -34,7 +41,10 @@ function cargarSelectCond()
 function actualizarVehiculo(){ 
     tablaVehiculos.innerHTML = ""; // Limpiar tabla
 
-    listaVehiculos.forEach(veh => { //for i in array
+    let conductorSelecId = parseInt(conductorSelect.value);
+    let conductorSeleccionado = listaCond.find(c => c.id == conductorSelecId);
+    
+    conductorSeleccionado.vehiculos.forEach(veh => { //for i in array
         const fila = document.createElement("tr");
 
         // Crear y agregar celdas
@@ -81,13 +91,19 @@ formVehiculos.addEventListener("submit", (event) => {
     
     let conductorSeleccionado = listaCond.find(c => c.id === conductorId);
     conductorSeleccionado.agregarVehiculo(vehiculo);
-    //listaVehiculos.push(vehiculo);
+    //listaVehiculos.push(vehiculo);`
     actualizarVehiculo();
     formVehiculos.reset();
 });
 
+conductorSelect.addEventListener("change", (event) => {
+    actualizarVehiculo();
+});
+
 function eliminarVehiculo(idVehiculo){
-   const vIndex = listaVehiculos.findIndex(v => v.id === idVehiculo);
-   listaVehiculos.splice(vIndex,1);
+   const conductorId = parseInt(conductorSelect.value);
+   const conductorSeleccionado = listaCond.find(c => c.id === conductorId);
+   const vIndex = conductorSeleccionado.vehiculos.findIndex(v => v.id === idVehiculo);
+   conductorSeleccionado.vehiculos.splice(vIndex,1);
    actualizarVehiculo();
 }
